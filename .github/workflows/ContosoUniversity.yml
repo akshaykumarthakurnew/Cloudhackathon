@@ -20,6 +20,8 @@ env:
   CONFIGURATION: release
   AZ_APP_NAME: ${{ secrets.AZURE_ENVIRONMENT_NAME }}-app
   AZ_API_NAME: ${{ secrets.AZURE_ENVIRONMENT_NAME }}-api
+  AZURE_WEBAPP_NAME: 'Akshay-app'
+  AZURE_API_NAME: 'Akshay-api'
 
 jobs:
   build:
@@ -102,11 +104,11 @@ jobs:
       - name: Deploy API
         uses: azure/webapps-deploy@v2.2.3
         with:
-          app-name: Akshay-api
+          app-name: ${{ env.AZURE_API_NAME }}
           package: api-artifact
       
       - name: Deploy APP
         uses: azure/webapps-deploy@v2.2.3
         with:
-          app-name: Akshay-app
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
           package: app-artifact
