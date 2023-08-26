@@ -20,8 +20,8 @@ env:
   CONFIGURATION: release
   AZ_APP_NAME: ${{ secrets.AZURE_ENVIRONMENT_NAME }}-app
   AZ_API_NAME: ${{ secrets.AZURE_ENVIRONMENT_NAME }}-api
-  AZURE_WEBAPP_NAME: 'Akshay-app'
-  AZURE_API_NAME: 'Akshay-api'
+  AZURE_WEBAPP_NAME: Akshay-app
+  AZURE_API_NAME: Akshay-api
 
 jobs:
   build:
