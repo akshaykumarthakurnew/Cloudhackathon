@@ -32,7 +32,7 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     
     - name: Deploy Template
-      uses: Azure/arm-deploy@v1.0.8
+      uses: Azure/arm-deploy@v1.0.9
       with:
         scope: subscription
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
