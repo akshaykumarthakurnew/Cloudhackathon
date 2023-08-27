@@ -29,9 +29,15 @@ jobs:
       contents: read
       security-events: write
     uses: akshaykumarthakurnew/CloudhackathonSrc/.github/workflows/CodeQL.yml@main
-    
+
+  scanDASTReusableWF:  
+    needs: [buildASPDotNetCoreReusableWf, scanCodeQLResuableWF]
+    uses: akshaykumarthakurnew/CloudhackathonSrc/.github/workflows/stackhawkDAST.yml@main
+    secrets:
+      HAWK_API_KEY: $P{ secrets.HAWK_API_KEY }}
+      
   deployASPDotnetCoreReusableWF:
-    needs: [buildASPDotNetCoreReusableWf,scanCodeQLResuableWF,lintReusableWF]
+    needs: [buildASPDotNetCoreReusableWf,scanCodeQLResuableWF,lintReusableWF,scanDASTReusableWF]
     uses: akshaykumarthakurnew/CloudhackathonSrc/.github/workflows/deploy_aspdotnetcore.yml@main
     with:
       AZURE_API_NAME: Akshay-api
