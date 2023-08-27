@@ -21,6 +21,10 @@ jobs:
 
   lintReusableWF:
     needs: buildASPDotNetCoreReusableWf
+    permissions:
+      contents: read
+      packages: read
+      statuses: write
     uses: akshaykumarthakurnew/CloudhackathonSrc/.github/workflows/linter.yml@main
   
   scanCodeQLResuableWF:
