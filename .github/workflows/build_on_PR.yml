@@ -19,8 +19,8 @@ jobs:
   call-workflow-build-aspdotnetcore:
     #uses: octo-org/example-repo/.github/workflows/reusable-workflow.yml@main
     uses: akshaykumarthakurnew/CloudhackathonSrc/.github/workflows/build_aspdotnetcore.yml@main
-    #with:
-    #  config-path: .github/labeler.yml
+    with:
+      dotnetverion: 6.0.x
     #secrets:
     #  envPAT: ${{ secrets.envPAT }}
     
