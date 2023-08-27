@@ -10,7 +10,7 @@ on:
   
 
 jobs:
-  call-workflow-build-aspdotnetcore:
+  buildASPDotNetCoreReusableWf:
     uses: akshaykumarthakurnew/CloudhackathonSrc/.github/workflows/build_aspdotnetcore.yml@main
     with:
       dotnetverion: 6.0.x
@@ -20,5 +20,6 @@ jobs:
     #  envPAT: ${{ secrets.envPAT }}
   
   deployASPDotnetCoreReusableWF:
+    needs: buildASPDotNetCoreReusableWf
     uses: akshaykumarthakurnew/CloudhackathonSrc/.github/workflows/deploy_aspdotnetcore.yml@main
     
