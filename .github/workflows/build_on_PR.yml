@@ -18,6 +18,7 @@ jobs:
       webApiPubPath: 'src/ContosoUniversity.API/ContosoUniversity.API.csproj'
     #secrets:
     #  envPAT: ${{ secrets.envPAT }}
-
-
+  
+  deployASPDotnetCoreReusableWF:
+    uses: akshaykumarthakurnew/CloudhackathonSrc/.github/workflows/deploy_aspdotnetcore.yml@main
     
