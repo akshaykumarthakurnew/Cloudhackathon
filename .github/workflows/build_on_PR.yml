@@ -29,6 +29,10 @@ jobs:
   
   scanCodeQLResuableWF:
     needs: buildASPDotNetCoreReusableWf
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
     uses: akshaykumarthakurnew/CloudhackathonSrc/.github/workflows/CodeQL.yml@main
     
   deployASPDotnetCoreReusableWF:
