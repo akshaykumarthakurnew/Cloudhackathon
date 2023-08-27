@@ -22,4 +22,11 @@ jobs:
   deployASPDotnetCoreReusableWF:
     needs: buildASPDotNetCoreReusableWf
     uses: akshaykumarthakurnew/CloudhackathonSrc/.github/workflows/deploy_aspdotnetcore.yml@main
+    with:
+      AZURE_API_NAME: Akshay-api
+      AZURE_WEBAPP_NAME: Akshay-app
+    secrets:
+      AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
+      AZURE_CONTOSO_CONN_STRING: ${{ secrets.AZURE_CONTOSO_CONN_STRING }}
+      AZURE_CONTOSO_APP_INSIGHTS: ${{ secrets.AZURE_CONTOSO_APP_INSIGHTS }}
     
