@@ -8,19 +8,14 @@ on:
 # We also want to be able to run this manually from Github
   workflow_dispatch:
   
-#env:
-  #CONFIGURATION: release
-  #AZ_APP_NAME: ${{ secrets.AZURE_ENVIRONMENT_NAME }}-app
-  #AZ_API_NAME: ${{ secrets.AZURE_ENVIRONMENT_NAME }}-api
-  #AZURE_WEBAPP_NAME: Akshay-app
-  #AZURE_API_NAME: Akshay-api
 
 jobs:
   call-workflow-build-aspdotnetcore:
-    #uses: octo-org/example-repo/.github/workflows/reusable-workflow.yml@main
     uses: akshaykumarthakurnew/CloudhackathonSrc/.github/workflows/build_aspdotnetcore.yml@main
     with:
       dotnetverion: 6.0.x
+      webAppPubPath: 'src/ContosoUniversity.WebApplication/ContosoUniversity.WebApplication.csproj'
+      webApiPubPath: 'src/ContosoUniversity.API/ContosoUniversity.API.csproj'
     #secrets:
     #  envPAT: ${{ secrets.envPAT }}
     
