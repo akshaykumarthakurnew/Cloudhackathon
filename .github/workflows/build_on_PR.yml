@@ -19,12 +19,18 @@ jobs:
     #secrets:
     #  envPAT: ${{ secrets.envPAT }}
 
+  lintReusableWF:
+    needs: buildASPDotNetCoreReusableWf
+    uses: akshaykumarthakurnew/CloudhackathonSrc/.github/workflows/linter.yml@main
+    with:
+      secrets: ${{ secrets.GITHUB_TOKEN }}
+  
   scanCodeQLResuableWF:
     needs: buildASPDotNetCoreReusableWf
     uses: akshaykumarthakurnew/CloudhackathonSrc/.github/workflows/CodeQL.yml@main
     
   deployASPDotnetCoreReusableWF:
-    needs: [buildASPDotNetCoreReusableWf,scanCodeQLResuableWF]
+    needs: [buildASPDotNetCoreReusableWf,scanCodeQLResuableWF,lintReusableWF]
     uses: akshaykumarthakurnew/CloudhackathonSrc/.github/workflows/deploy_aspdotnetcore.yml@main
     with:
       AZURE_API_NAME: Akshay-api
