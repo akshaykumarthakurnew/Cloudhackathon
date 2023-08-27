@@ -18,9 +18,13 @@ jobs:
       webApiPubPath: 'src/ContosoUniversity.API/ContosoUniversity.API.csproj'
     #secrets:
     #  envPAT: ${{ secrets.envPAT }}
-  
-  deployASPDotnetCoreReusableWF:
+
+  scanCodeQLResuableWF:
     needs: buildASPDotNetCoreReusableWf
+    uses: akshaykumarthakurnew/CloudhackathonSrc/.github/workflows/CodeQL.yml@main
+    
+  deployASPDotnetCoreReusableWF:
+    needs: [buildASPDotNetCoreReusableWf,scanCodeQLResuableWF]
     uses: akshaykumarthakurnew/CloudhackathonSrc/.github/workflows/deploy_aspdotnetcore.yml@main
     with:
       AZURE_API_NAME: Akshay-api
