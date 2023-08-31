@@ -46,3 +46,8 @@ jobs:
       AZURE_CONTOSO_CONN_STRING: ${{ secrets.AZURE_CONTOSO_CONN_STRING }}
       AZURE_CONTOSO_APP_INSIGHTS: ${{ secrets.AZURE_CONTOSO_APP_INSIGHTS }}
     
+  scanDASTZapReusableWF:
+    needs: [deployASPDotnetCoreReusableWF]
+    uses: akshaykumarthakurnew/CloudhackathonSrc/.github/workflows/zaproxyDAST.yml@main
+    with: 
+       URL: ''
