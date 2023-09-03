@@ -34,7 +34,9 @@ jobs:
       contents: read
       security-events: write
     uses: akshaykumarthakurnew/CloudhackathonSrc/.github/workflows/CodeQL.yml@main
-    
+    with:
+      language: "dotnet"
+      
   deployASPDotnetCoreReusableWF:
     needs: [buildASPDotNetCoreReusableWf,scanCodeQLResuableWF,lintReusableWF]
     uses: akshaykumarthakurnew/CloudhackathonSrc/.github/workflows/deploy_aspdotnetcore.yml@main
