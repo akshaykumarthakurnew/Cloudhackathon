@@ -10,17 +10,7 @@ on:
   
 
 jobs:
-  buildASPDotNetCoreReusableWf:
-    uses: akshaykumarthakurnew/CloudhackathonSrc/.github/workflows/build_aspdotnetcore.yml@main
-    with:
-      dotnetverion: 6.0.x
-      webAppPubPath: 'src/ContosoUniversity.WebApplication/ContosoUniversity.WebApplication.csproj'
-      webApiPubPath: 'src/ContosoUniversity.API/ContosoUniversity.API.csproj'
-    #secrets:
-    #  envPAT: ${{ secrets.envPAT }}
-
   lintReusableWF:
-    needs: buildASPDotNetCoreReusableWf
     permissions:
       contents: read
       packages: read
@@ -28,7 +18,6 @@ jobs:
     uses: akshaykumarthakurnew/CloudhackathonSrc/.github/workflows/linter.yml@main
   
   scanCodeQLResuableWF:
-    needs: buildASPDotNetCoreReusableWf
     permissions:
       actions: read
       contents: read
@@ -36,6 +25,15 @@ jobs:
     uses: akshaykumarthakurnew/CloudhackathonSrc/.github/workflows/CodeQL.yml@main
     with:
       language: 'dotnet'
+
+  buildASPDotNetCoreReusableWf:
+    needs: [lintReusableWF,scanCodeQLResuableWF]
+    uses: akshaykumarthakurnew/CloudhackathonSrc/.github/workflows/build_aspdotnetcore.yml@main
+    with:
+      dotnetverion: 6.0.x
+      webAppPubPath: 'src/ContosoUniversity.WebApplication/ContosoUniversity.WebApplication.csproj'
+      webApiPubPath: 'src/ContosoUniversity.API/ContosoUniversity.API.csproj'
+
       
   deployASPDotnetCoreReusableWF:
     needs: [buildASPDotNetCoreReusableWf,scanCodeQLResuableWF,lintReusableWF]
@@ -48,8 +46,8 @@ jobs:
       AZURE_CONTOSO_CONN_STRING: ${{ secrets.AZURE_CONTOSO_CONN_STRING }}
       AZURE_CONTOSO_APP_INSIGHTS: ${{ secrets.AZURE_CONTOSO_APP_INSIGHTS }}
     
-  scanDASTZapReusableWF:
-    needs: [deployASPDotnetCoreReusableWF]
-    uses: akshaykumarthakurnew/CloudhackathonSrc/.github/workflows/zaproxyDAST.yml@main
-    with: 
-       URL: ''
+  #scanDASTZapReusableWF:
+  #  needs: [deployASPDotnetCoreReusableWF]
+  #  uses: akshaykumarthakurnew/CloudhackathonSrc/.github/workflows/zaproxyDAST.yml@main
+  #  with: 
+  #     URL: ''
