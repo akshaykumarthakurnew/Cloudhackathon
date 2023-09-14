@@ -1,4 +1,4 @@
-name: ContosoUniversity-Infra
+name: InfraDeploy
 
 on:
   push:
