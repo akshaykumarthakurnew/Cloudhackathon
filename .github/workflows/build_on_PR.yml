@@ -26,6 +26,17 @@ jobs:
     with:
       language: 'dotnet'
 
+  sonarscanReusableWF:
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    uses:  akshaykumarthakurnew/CloudhackathonSrc/.github/workflows/sonarcloud.yml@main 
+    with:
+      secrets: inherit
+        
+      
+
   buildASPDotNetCoreReusableWf:
     needs: [lintReusableWF,scanCodeQLResuableWF]
     uses: akshaykumarthakurnew/CloudhackathonSrc/.github/workflows/build_aspdotnetcore.yml@main
