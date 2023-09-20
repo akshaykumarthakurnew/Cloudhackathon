@@ -1,7 +1,7 @@
 # -- stackhawk configuration for HackathonApp --
 app:
   # -- An applicationId obtained from the StackHawk platform. --
-  applicationId: 89e4841d-2ade-4cf3-b0ff-930a06e13fd6 # (required)
+  applicationId: 72fe1acf-d2fb-41ea-bbe6-737479c140ec # (required)
   # -- The environment for the applicationId defined in the StackHawk platform. --
   env: Development # (required)
   # -- The url of your application to scan --
