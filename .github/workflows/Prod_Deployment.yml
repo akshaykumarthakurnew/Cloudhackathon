@@ -86,7 +86,7 @@ jobs:
           ApplicationInsights.ConnectionString: ${{ secrets.AZURE_CONTOSO_APP_INSIGHTS }}
       
       - name: Azure Login
-        uses: Azure/login@v1.4.7
+        uses: Azure/login@v1.5.0
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
